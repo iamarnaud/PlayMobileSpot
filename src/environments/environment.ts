@@ -1,12 +1,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyD5P4ZQxvEmK0wmRlt-5UCmKE2CgmCNp-k",
-    authDomain: "real-473b8.firebaseapp.com",
-    databaseURL: "https://real-473b8.firebaseio.com",
-    projectId: "real-473b8",
-    storageBucket: "real-473b8.appspot.com",
-    messagingSenderId: "740180753560"
+    apiKey: "AIzaSyA5U7UgmIHEDI8DDlJZy4tBj-7sr3Le-Uo",
+    authDomain: "cafemobile-862b0.firebaseapp.com",
+    databaseURL: "https://cafemobile-862b0.firebaseio.com",
+    projectId: "cafemobile-862b0",
+    storageBucket: "cafemobile-862b0.appspot.com",
+    messagingSenderId: "558038530479"
 
-}
+
+  }
 };
