@@ -6,65 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<ion-content padding>
   <!-- ceci est un modèle pour-->
   <!--chercher data dans bdd via angularfire2
   cf video https://www.youtube.com/watch?v=gUmItHaVL2w
@@ -79,12 +21,13 @@
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button color="primary">
-          <ion-icon name="person-add"></ion-icon>
-
+        <button ion-button color="danger" (click)="showConfirm()">
+          <ion-icon class="buttonsize" name="close"></ion-icon>
         </button>
-        <button ion-button color="contact">
-          <ion-icon name="mail"></ion-icon>
+
+        <button ion-button color="secondary">
+          <ion-icon class="buttonsize" name="mail"></ion-icon>
+          
         </button>
       </ion-item-options>
     </ion-item-sliding>
