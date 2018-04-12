@@ -1,4 +1,4 @@
-<!--
+.<!--
   Generated template for the LoginPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -17,20 +17,31 @@
 
   <img class="logo" src="../../assets/imgs/logo.png"/>
 
-  <ion-list>
+  <div
+    class="login">
 
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
+    <!--On appelle la méthode Login de login.ts qui est exécutée par ngsubmit-->
+    <form
+      [formGroup]="form"
+      (ngSubmit)="logIn()">
+      <ion-list>
+        <ion-item margin-bottom>
+          <ion-label color="nav" stacked>Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
 
-    <ion-item margin-bottom="">
-      <ion-label stacked>Mot de Passe</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
 
-    <button ion-button color="secondary" block> Connexion </button>
+        <ion-item margin-bottom>
+          <ion-label color="nav" stacked>Mot de passe</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
 
-  </ion-list>
+
+        <button ion-button color="secondary" text-center block [disabled]="!form.valid">Connexion
+        </button>
+      </ion-list>
+    </form>
+
+  </div>
 
 </ion-content>

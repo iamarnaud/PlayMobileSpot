@@ -14,6 +14,14 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/index.jpg">
+        </ion-avatar>
+        <h2>NOM CONTACT</h2>
+      </ion-item>
 
   <ion-searchbar (ionInput)="getUser($event)"></ion-searchbar>
 
@@ -40,12 +48,12 @@
       </ion-item-options>-->
 
       <ion-item-options side="right">
-        <button (click)="addContact(user)" ion-button color="danger">
+        <button (click)="addContact(user)" ion-button color="secondary">
           <ion-icon name="add"></ion-icon>
           Ajout
+
         </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
 </ion-content>
