@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ItemsProvider} from "../../providers/items/items";
+import { User} from "../../app/models/User";
 import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+  users: User[];
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public userService: ItemsProvider) {
   }
   showConfirm() {
     let confirm = this.alertCtrl.create({
@@ -33,4 +37,11 @@ export class ContactPage {
     confirm.present();
   }
 
+  // run automatiquement
+  ngOnInit(){
+    this.userService.getUsers().subscribe(users=>{
+      // console.log(users);
+      this.users = users;
+    });
+  }
 }

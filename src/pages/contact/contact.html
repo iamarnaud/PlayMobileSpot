@@ -7,13 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <!-- ceci est un modèle pour-->
+  <!--chercher data dans bdd via angularfire2
+  cf video https://www.youtube.com/watch?v=gUmItHaVL2w
+  on utilise le model USer-->
+  <ion-list *ngFor="let user of users">
     <ion-item-sliding>
       <ion-item>
         <ion-avatar item-start>
-          <img src="../../assets/imgs/index.jpg">
+          <img src="{{user.avatar}}">
         </ion-avatar>
-        <h2>NOM CONTACT</h2>
+        <h2>{{user.nom}} {{user.prenom}}</h2>
       </ion-item>
 
       <ion-item-options side="right">
@@ -23,8 +27,11 @@
 
         <button ion-button color="secondary">
           <ion-icon class="buttonsize" name="mail"></ion-icon>
+          
         </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
 </ion-content>
+
