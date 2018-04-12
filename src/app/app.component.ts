@@ -11,7 +11,7 @@ import {HomePage} from "../pages/home/home";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = TabsPage; //Mettre HomePage une fois que l'identification est valide.
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
