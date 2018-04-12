@@ -7,11 +7,88 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ceci est un modèle pour-->
+  <!--chercher data dans bdd via angularfire2
+  cf video https://www.youtube.com/watch?v=gUmItHaVL2w
+  on utilise le model USer-->
+  <ion-list *ngFor="let user of users">
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{user.avatar}}">
+        </ion-avatar>
+        <h2>{{user.nom}} {{user.prenom}}</h2>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="person-add"></ion-icon>
+
+        </button>
+        <button ion-button color="contact">
+          <ion-icon name="mail"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
 </ion-content>
+
