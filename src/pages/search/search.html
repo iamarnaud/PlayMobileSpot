@@ -23,13 +23,35 @@
         <h2>NOM CONTACT</h2>
       </ion-item>
 
-      <ion-item-options side="right">
-        <button ion-button color="primary">
-          <ion-icon class="buttonsize" name="add"></ion-icon>
-        </button>
+  <ion-searchbar (ionInput)="getUser($event)"></ion-searchbar>
 
+  <ion-list>
+    <ion-item-sliding *ngFor="let user of users">
+      <ion-item (click)="goToUserProfil(user)">
+        <ion-avatar item-start>
+          <img [src]="user.avatar" alt="avatar">
+        </ion-avatar>
+        <h2>{{ user.prenom }}</h2>
+        <h2>{{ user.nom }}</h2>
+
+      </ion-item>
+
+<!--      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
         <button ion-button color="secondary">
-          <ion-icon class="buttonsize" name="mail"></ion-icon>
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>-->
+
+      <ion-item-options side="right">
+        <button (click)="addContact(user)" ion-button color="secondary">
+          <ion-icon name="add"></ion-icon>
+          Ajout
+
         </button>
       </ion-item-options>
     </ion-item-sliding>
