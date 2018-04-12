@@ -6,12 +6,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/index.jpg">
+        </ion-avatar>
+        <h2>NOM CONTACT</h2>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="showConfirm()">
+          <ion-icon class="buttonsize" name="close"></ion-icon>
+        </button>
+
+        <button ion-button color="secondary">
+          <ion-icon class="buttonsize" name="mail"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>
