@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//pour Auth
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
+
+import {AuthProvider} from '../../providers/auth/auth';
+
+import {TabsPage} from "../tabs/tabs";
 
 @IonicPage()
 @Component({
@@ -15,11 +19,43 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //cree une reference pour l'objet form group
+  public form: FormGroup
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private _FormBuilder: FormBuilder,
+              private _AUTH: AuthProvider) {
+    // on utilise le form builder d'angular pour définir le form group
+    this.form = this._FormBuilder.group({
+      'email': ['', Validators.required],
+      'password': ['', Validators.required]
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  /**
+   * Log in using the loginWithEmailAndPassword method
+   * from the AuthProvider service (supplying the email
+   * and password FormControls from the template via the
+   * FormBuilder object
+   * @method logIn
+   * @return {none}
+   */
+  logIn() : void
+  {
+    let email      : any        = this.form.controls['email'].value,
+      password   : any        = this.form.controls['password'].value;
 
+    this._AUTH.loginWithEmailAndPassword(email, password)
+      .then((auth : any) =>
+      {
+        this.navCtrl.setRoot(TabsPage);
+      })
+      .catch((error : any) =>
+      {
+        console.log(error.message);
+      });
+  }
 }
+
+
