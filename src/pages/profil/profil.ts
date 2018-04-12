@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
+import {Component} from '@angular/core';
+import {NavController, AlertController, NavParams} from 'ionic-angular';
+import {LoginPage} from '../login/login';
 
 @Component({
   selector: 'page-profil',
@@ -8,10 +8,12 @@ import { LoginPage } from '../login/login';
 })
 export class ProfilPage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, private navParams: NavParams) {
+    let user = navParams.get('user');
+    console.log(user);
   }
 
-  showConfirm(){
+  showConfirm() {
     let confirm = this.alertCtrl.create({
       title: "Confirmation",
       message: "Etes-vous sur de vouloir vous déconnecter ?",
@@ -21,13 +23,13 @@ export class ProfilPage {
           this.navCtrl.setRoot(LoginPage);
         }
       },
-      {
-        text: "Non",
-        handler: () => {
+        {
+          text: "Non",
+          handler: () => {
+          }
         }
-      }
-    ]
-  });
-  confirm.present();
+      ]
+    });
+    confirm.present();
   }
 }

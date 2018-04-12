@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {exitCodeFromResult} from "@angular/compiler-cli";
 import {ProfilPage} from "../profil/profil";
 
 /**
@@ -23,10 +22,6 @@ export class SearchPage {
 
     this.initialUsers();
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
   }
 
 
