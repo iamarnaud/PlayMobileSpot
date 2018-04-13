@@ -11,6 +11,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content  *ngIf="user" padding>
+
+<div>
+  <h1>{{ user.nom }}</h1>
+  <h1>{{ user.prenom }}</h1>
+  <img [src]="user.avatar" alt="avatar">
+  <h1>{{ user.age }}</h1>
+</div>
+
+  <div>
+    <h1>Amis</h1>
+    <h2>J'ai : .... amis</h2>
+  </div>
 
 </ion-content>

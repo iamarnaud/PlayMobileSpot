@@ -1,0 +1,24 @@
+
+[
+  {
+    "id": "0",
+    "prenom": "Eric",
+    "nom": "Le devedec",
+    "age": "25",
+    "avatar": "http://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": "1",
+    "prenom": "Cess",
+    "nom": "Dupont",
+    "age": "25",
+    "avatar": "http://i.pravatar.cc/150?img=2"
+  },
+  {
+    "id": "2",
+    "prenom": "Jean",
+    "nom": "Chales",
+    "age": "25",
+    "avatar": "http://i.pravatar.cc/150?img=3"
+  }
+]

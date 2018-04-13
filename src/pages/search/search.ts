@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ProfilPage} from "../profil/profil";
+import {UserServiceProvider} from "../../providers/user-service/user-service";
 
 /**
  * Generated class for the SearchPage page.
@@ -16,46 +17,10 @@ import {ProfilPage} from "../profil/profil";
 })
 export class SearchPage {
 
-  users: any[] = [];
+  users;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    this.initialUsers();
-
-  }
-
-
-  private initialUsers() {
-    this.users = [
-      {
-        id: 1,
-        prenom: 'Eric',
-        nom: 'Le devedec',
-        age: '25',
-        avatar: 'http://i.pravatar.cc/150?img=1'
-      },
-      {
-        id: 2,
-        prenom: 'Cess',
-        nom: 'Dupont',
-        age: '25',
-        avatar: 'http://i.pravatar.cc/150?img=2'
-      },
-      {
-        id: 3,
-        prenom: 'Jean',
-        nom: 'Chales',
-        age: '25',
-        avatar: 'http://i.pravatar.cc/150?img=3'
-      }
-    ];
-    /*    this.users = this.users.map((user) => {
-
-          let prenom = user.prenom;
-
-          return {id : user.id ,prenom : prenom.charAt(0).toUpperCase() + prenom.slice(1)};
-        }) */
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider) {
+    this.getUsers();
 
   }
 
@@ -64,16 +29,9 @@ export class SearchPage {
 
     let val = query.target.value;
 
-    this.initialUsers();
-
-
     if (val && val.trim() != '') {
       this.users = this.users.filter((user) => {
-
-
         return (user.prenom.toLowerCase().indexOf(val.toLowerCase()) > -1);
-
-
       })
     }
   }
@@ -88,7 +46,20 @@ export class SearchPage {
 
   public goToUserProfil(user) {
 
-    this.navCtrl.push(ProfilPage, user)
+      this.navCtrl.push(ProfilPage, user)
+
+  }
+
+  getUsers() {
+    this.userService.getUsers()
+      .then(data => {
+        this.users = data;
+      });
+  }
+
+  ionViewWillEnter() {
+
+    this.getUsers();
   }
 
 }
