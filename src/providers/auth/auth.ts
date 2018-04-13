@@ -76,4 +76,11 @@ export class AuthProvider {
     });
   }
 
+
+  getUserAuthID () {
+
+    return firebase.auth().currentUser
+
+}
+
 }
