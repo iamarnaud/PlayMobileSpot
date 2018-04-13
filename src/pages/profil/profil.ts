@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, AlertController, NavParams} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {ItemsProvider} from "../../providers/items/items";
+import {AuthProvider} from "../../providers/auth/auth";
 
 @Component({
   selector: 'page-profil',
@@ -9,7 +10,7 @@ import {ItemsProvider} from "../../providers/items/items";
 })
 export class ProfilPage {
 
-  UID = 'MZEihsJOwXfCYizAb7NAiOjTvbG2' ; // A Changer et faire un setter avec ID AUTH
+  UID ;
   user: object;
 
 
@@ -17,16 +18,18 @@ export class ProfilPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
-    public userService: ItemsProvider
+    public userService: ItemsProvider,
+    public userAuth: AuthProvider
   ) {
+
+    this.getUserAuthIUD();
 
     if (typeof(navParams.get('UID')) !== 'undefined') {
       this.UID = navParams.get('UID')
-    }else{
-      this.UID = 'MZEihsJOwXfCYizAb7NAiOjTvbG2';
     };
 
     this.getUsers();
+
   }
 
   showConfirm() {
@@ -60,6 +63,10 @@ export class ProfilPage {
       this.user = this.user[0]
 
     })
+  }
+
+  getUserAuthIUD() {
+    this.UID = this.userAuth.getUserAuthID().uid;
   }
 
 
