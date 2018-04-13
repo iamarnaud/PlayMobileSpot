@@ -4,8 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import {environment} from "../environments/environment";
-
-
 import {LoginPage} from "../pages/login/login";
 
 @Component({

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController, NavParams} from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {UserServiceProvider} from "../../providers/user-service/user-service";
 
 @Component({
   selector: 'page-profil',
@@ -8,9 +9,16 @@ import {LoginPage} from '../login/login';
 })
 export class ProfilPage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, private navParams: NavParams) {
-    let user = navParams.get('user');
-    console.log(user);
+id: number = 0 ; // A Changer et faire un setter avec ID AUTH
+user: object;
+
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams , public userService : UserServiceProvider) {
+
+    if(typeof(navParams.get('id')) !== 'undefined' ) {
+      this.id = navParams.get('id')
+    };
+    this.getUsers();
   }
 
   showConfirm() {
@@ -32,4 +40,14 @@ export class ProfilPage {
     });
     confirm.present();
   }
+
+
+  getUsers() {
+    this.userService.getUsers()
+      .then(data => {
+        this.user = data[this.id];
+      });
+  }
+
+
 }
