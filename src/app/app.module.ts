@@ -5,6 +5,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { environment} from "../environments/environment";
+import {AngularFireModule} from "angularfire2";
+import {AngularFirestoreModule} from "angularfire2/firestore";
+
 
 import { ProfilPage } from '../pages/profil/profil';
 import { ContactPage } from '../pages/contact/contact';
@@ -17,6 +20,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
+import { ItemsProvider } from '../providers/items/items';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +31,14 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     HomePage,
     TabsPage,
     SearchPage,
-    LoginPage
+    LoginPage,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-  //  AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
+    AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -51,6 +58,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider
+    ItemsProvider
   ]
 })
 export class AppModule {}
