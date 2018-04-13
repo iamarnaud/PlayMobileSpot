@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ProfilPage} from "../profil/profil";
-import {UserServiceProvider} from "../../providers/user-service/user-service";
+import {ItemsProvider} from "../../providers/items/items";
+import {User} from "../../app/models/User";
+
 
 /**
  * Generated class for the SearchPage page.
@@ -17,11 +19,10 @@ import {UserServiceProvider} from "../../providers/user-service/user-service";
 })
 export class SearchPage {
 
-  users;
+  users: User[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider) {
+  constructor(public navCtrl: NavController, public userService: ItemsProvider, public navParams: NavParams) {
     this.getUsers();
-
   }
 
 
@@ -40,26 +41,27 @@ export class SearchPage {
   public addContact(user) {
     // Eric@TODO à Finir
 
-    console.log(`Ok Contact : ${user.prenom}  avec l' ID : ${user.id} a été ajouté`);
+    console.log(`Ok Contact : ${user.prenom}  avec l' ID : ${user.UID} a été ajouté`);
   }
 
 
   public goToUserProfil(user) {
-
       this.navCtrl.push(ProfilPage, user)
-
   }
 
+
+
   getUsers() {
-    this.userService.getUsers()
-      .then(data => {
-        this.users = data;
-      });
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    })
   }
 
   ionViewWillEnter() {
 
     this.getUsers();
   }
+
+
 
 }
