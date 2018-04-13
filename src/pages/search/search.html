@@ -11,7 +11,7 @@
 
   <ion-searchbar (ionInput)="getUser($event)"></ion-searchbar>
 
-  <ion-list>
+  <ion-list >
     <ion-item-sliding *ngFor="let user of users">
       <ion-item (click)="goToUserProfil(user)">
         <ion-avatar item-start>

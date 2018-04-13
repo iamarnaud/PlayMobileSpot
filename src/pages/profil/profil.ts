@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController, NavParams} from 'ionic-angular';
 import {LoginPage} from '../login/login';
-import {UserServiceProvider} from "../../providers/user-service/user-service";
+import {ItemsProvider} from "../../providers/items/items";
 
 @Component({
   selector: 'page-profil',
@@ -9,15 +9,23 @@ import {UserServiceProvider} from "../../providers/user-service/user-service";
 })
 export class ProfilPage {
 
-id: number = 0 ; // A Changer et faire un setter avec ID AUTH
-user: object;
+  UID = 'MZEihsJOwXfCYizAb7NAiOjTvbG2' ; // A Changer et faire un setter avec ID AUTH
+  user: object;
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams , public userService : UserServiceProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams,
+    public userService: ItemsProvider
+  ) {
 
-    if(typeof(navParams.get('id')) !== 'undefined' ) {
-      this.id = navParams.get('id')
+    if (typeof(navParams.get('UID')) !== 'undefined') {
+      this.UID = navParams.get('UID')
+    }else{
+      this.UID = 'MZEihsJOwXfCYizAb7NAiOjTvbG2';
     };
+
     this.getUsers();
   }
 
@@ -43,10 +51,15 @@ user: object;
 
 
   getUsers() {
-    this.userService.getUsers()
-      .then(data => {
-        this.user = data[this.id];
+    this.userService.getUsers().subscribe(data => {
+
+     this.user =  data.filter( elem => {
+        return elem.UID === this.UID;
       });
+      // Transforme le tebleau en objet
+      this.user = this.user[0]
+
+    })
   }
 
 

@@ -18,6 +18,7 @@ export class ItemsProvider {
   }
 
   getUsers(){
+    this.users = this.afs.collection('users').valueChanges();
     return this.users;
   }
 
