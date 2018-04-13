@@ -57,7 +57,7 @@ import { ItemsProvider } from '../providers/items/items';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserServiceProvider
+    UserServiceProvider,
     ItemsProvider
   ]
 })
