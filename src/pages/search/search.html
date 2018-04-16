@@ -2,6 +2,11 @@
 
   <ion-navbar color="nav">
     <ion-title>SEECRETSPOT</ion-title>
+    <ion-buttons *ngIf="position" end>
+      <button ion-button icon-only (click)="showMyGeo()">
+        <ion-icon name="compass" md="md-compass" id="icon_compass"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -11,7 +16,7 @@
 
   <ion-searchbar (ionInput)="getUser($event)"></ion-searchbar>
 
-  <ion-list >
+  <ion-list>
     <ion-item-sliding *ngFor="let user of users">
       <ion-item (click)="goToUserProfil(user)">
         <ion-avatar item-start>
