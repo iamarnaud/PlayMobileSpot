@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, AlertController, NavParams} from 'ionic-angular';
 
 //pour Auth
 import {
@@ -24,6 +24,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public alertCtrl: AlertController,
               private _FormBuilder: FormBuilder,
               private _AUTH: AuthProvider) {
     // on utilise le form builder d'angular pour définir le form group
@@ -53,8 +54,14 @@ export class LoginPage {
       })
       .catch((error : any) =>
       {
-        console.log(error.message);
+        let alert = this.alertCtrl.create({
+          title: 'Oopsy!',
+          subTitle: error.message,
+          buttons: ['Réessayer']
+        });
+        alert.present();
       });
+
   }
 }
 
