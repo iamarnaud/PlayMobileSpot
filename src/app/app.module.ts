@@ -21,6 +21,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+import {Geolocation} from "@ionic-native/geolocation";
+import { GeolocationProvider } from '../providers/geolocation/geolocation';
+import {GeoModalPage} from "../pages/geo-modal/geo-modal";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -32,6 +36,7 @@ import { ItemsProvider } from '../providers/items/items';
     TabsPage,
     SearchPage,
     LoginPage,
+    GeoModalPage
 
   ],
   imports: [
@@ -39,7 +44,8 @@ import { ItemsProvider } from '../providers/items/items';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
     AngularFirestoreModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +55,8 @@ import { ItemsProvider } from '../providers/items/items';
     HomePage,
     TabsPage,
     SearchPage,
-    LoginPage
+    LoginPage,
+    GeoModalPage
 
   ],
   providers: [
@@ -58,7 +65,9 @@ import { ItemsProvider } from '../providers/items/items';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
-    ItemsProvider
+    ItemsProvider,
+    Geolocation,
+    GeolocationProvider,
   ]
 })
 export class AppModule {}

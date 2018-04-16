@@ -1,0 +1,24 @@
+<!--
+  Generated template for the GeoModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ma position le {{ date }} <ion-item>
+      <ion-label> Activer le suivi de ma position </ion-label>
+      <ion-toggle (ionChange)="toogleBtnSuivi()" [(ngModel)]="suivi"></ion-toggle>
+    </ion-item></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<!--  <button ion-button (click)="showMap()">Voir Carte</button>-->
+
+
+  <div #map id="map"></div>
+</ion-content>

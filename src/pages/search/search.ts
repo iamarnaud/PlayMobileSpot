@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 import {ProfilPage} from "../profil/profil";
 import {ItemsProvider} from "../../providers/items/items";
 import {User} from "../../app/models/User";
+import {GeolocationProvider} from "../../providers/geolocation/geolocation";
+import {GeoModalPage} from "../geo-modal/geo-modal";
 
 
 /**
@@ -20,8 +22,16 @@ import {User} from "../../app/models/User";
 export class SearchPage {
 
   users: User[];
+  position;
 
-  constructor(public navCtrl: NavController, public userService: ItemsProvider, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public userService: ItemsProvider,
+    public navParams: NavParams,
+    public geolocalisation: GeolocationProvider,
+    public geomodal : ModalController
+  ) {
+    this.position =  geolocalisation.getUserPosition().status;
     this.getUsers();
   }
 
@@ -35,6 +45,7 @@ export class SearchPage {
         return (user.prenom.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+
   }
 
 
@@ -49,19 +60,28 @@ export class SearchPage {
       this.navCtrl.push(ProfilPage, user)
   }
 
-
-
-  getUsers() {
+  public getUsers() {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
     })
   }
 
-  ionViewWillEnter() {
+  public showMyGeo(){
+    let modal = this.geomodal.create(GeoModalPage,this.position);
+    modal.present();
 
-    this.getUsers();
   }
 
 
+  ionViewWillEnter() {
 
+    this.getUsers();
+
+  }
+
+  ionViewDidEnter() {
+     this.position = this.geolocalisation.getUserPosition().status;
+      console.log(this.position)
+
+  }
 }
