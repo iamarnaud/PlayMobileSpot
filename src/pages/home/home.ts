@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import {Geolocation} from "@ionic-native/geolocation";
 
 
 @Component({
@@ -8,9 +9,11 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  // latitude:any;
+  // longitude:any;
   public base64Image: string;
 
-  constructor(public navCtrl: NavController, public camera: Camera) {
+  constructor(public navCtrl: NavController, public camera: Camera, public geo : Geolocation) {
   }
 
   takePicture(){
@@ -25,4 +28,10 @@ export class HomePage {
       console.log(err);
     });
   }
+
+//   ionViewDidLoad(){
+//     this.geo.getCurrentPosition().then(pos =>{
+//     this.latitude=pos.coords.latitude;
+//   this.longitude = pos.coords.longitude;
+// }).catch( err => console.log(err));
 }

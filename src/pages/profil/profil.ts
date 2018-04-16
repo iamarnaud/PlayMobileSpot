@@ -4,13 +4,15 @@ import {LoginPage} from '../login/login';
 import {ItemsProvider} from "../../providers/items/items";
 import {AuthProvider} from "../../providers/auth/auth";
 
+
 @Component({
   selector: 'page-profil',
   templateUrl: 'profil.html'
 })
 export class ProfilPage {
 
-  UID ;
+
+  UID;
   user: object;
 
 
@@ -19,7 +21,8 @@ export class ProfilPage {
     public alertCtrl: AlertController,
     public navParams: NavParams,
     public userService: ItemsProvider,
-    public userAuth: AuthProvider
+    public userAuth: AuthProvider,
+
   ) {
 
     this.getUserAuthIUD();
@@ -56,7 +59,7 @@ export class ProfilPage {
   getUsers() {
     this.userService.getUsers().subscribe(data => {
 
-     this.user =  data.filter( elem => {
+      this.user = data.filter(elem => {
         return elem.UID === this.UID;
       });
       // Transforme le tebleau en objet
@@ -70,4 +73,5 @@ export class ProfilPage {
   }
 
 
-}
+
+  }

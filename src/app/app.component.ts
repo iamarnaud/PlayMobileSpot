@@ -21,4 +21,5 @@ export class MyApp {
     });
     firebase.initializeApp(environment.firebase);
   }
+
 }

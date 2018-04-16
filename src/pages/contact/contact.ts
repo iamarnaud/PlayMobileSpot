@@ -44,4 +44,5 @@ export class ContactPage {
       this.users = users;
     });
   }
+
 }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import {Geolocation} from "@ionic-native/geolocation";
 
 import { environment} from "../environments/environment";
 import {AngularFireModule} from "angularfire2";
@@ -15,6 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPage} from "../pages/search/search";
 import { LoginPage} from "../pages/login/login";
+import {GeolocPage} from "../pages/geoloc/geoloc";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +35,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     TabsPage,
     SearchPage,
     LoginPage,
+    GeolocPage
 
   ],
   imports: [
@@ -50,17 +53,19 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     HomePage,
     TabsPage,
     SearchPage,
-    LoginPage
+    LoginPage,
+  GeolocPage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    Geolocation,
     UserServiceProvider,
     ItemsProvider,
-    Camera
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
