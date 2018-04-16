@@ -3,7 +3,7 @@
     <ion-title>SEECRETSPOT
     </ion-title>
     <ion-buttons end>
-      <button ion-button clear icon-only>
+      <button ion-button clear icon-only (click)="takePicture()">
       <ion-icon name="camera" md="md-camera" id="icon_camera"></ion-icon>
       </button>
     </ion-buttons>
@@ -12,5 +12,8 @@
 
 <ion-content padding>
   <h2>Bienvenue sur le flux</h2>
+
+  <img [src]="base64Image" *ngIf="base64Image"/>
+  
  
 </ion-content>
