@@ -21,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ItemsProvider } from '../providers/items/items';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
-    ItemsProvider
+    ItemsProvider,
+    Camera
   ]
 })
 export class AppModule {}
