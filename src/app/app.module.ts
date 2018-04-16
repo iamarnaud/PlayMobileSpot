@@ -23,7 +23,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+
+import {Geolocation} from "@ionic-native/geolocation";
+import { GeolocationProvider } from '../providers/geolocation/geolocation';
+import {GeoModalPage} from "../pages/geo-modal/geo-modal";
+import {FormsModule} from "@angular/forms";
+
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 
 @NgModule({
@@ -35,15 +42,16 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     TabsPage,
     SearchPage,
     LoginPage,
-    CommentsPage,
-
+    GeoModalPage,
+    CommentsPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
     AngularFirestoreModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,8 +62,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     TabsPage,
     SearchPage,
     LoginPage,
-    CommentsPage,
-
+    GeoModalPage,
+    CommentsPage
   ],
   providers: [
     StatusBar,
@@ -64,6 +72,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     AuthProvider,
     UserServiceProvider,
     ItemsProvider,
+    Geolocation,
+    GeolocationProvider,
     Camera
   ]
 })
