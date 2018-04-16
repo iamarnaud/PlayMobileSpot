@@ -3,14 +3,50 @@
     <ion-title>SEECRETSPOT
     </ion-title>
     <ion-buttons end>
-      <button ion-button clear icon-only>
-      <ion-icon name="camera" md="md-camera" id="icon_camera"></ion-icon>
+      <button ion-button clear icon-only (click)="takePicture()">
+        <ion-icon name="camera" md="md-camera" id="icon_camera"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Bienvenue sur le flux</h2>
- 
+
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/alf74.jpg">
+      </ion-avatar>
+      <h2>Alex BIAGI</h2>
+      <p>il y a 11 heures</p>
+
+    </ion-item>
+
+    <img [src]="base64Image" *ngIf="base64Image" />
+
+    <ion-card-content>
+      <p>Dernier Commentaire ...</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small color="nav">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>Likes&nbsp;</div>
+          <ion-badge color="nav">60</ion-badge>     
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button icon-left clear small color="nav" (click)="goToCommentsPage()">
+          <ion-icon name="text" color="nav"></ion-icon>
+          <div>Comments&nbsp;</div>
+          <ion-badge color="nav">5</ion-badge>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>

@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Localisation des utilisateurs" />
     </plugin>
+    <plugin name="cordova-plugin-camera" spec="^4.0.2" />
 </widget>

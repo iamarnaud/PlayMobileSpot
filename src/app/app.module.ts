@@ -15,16 +15,22 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPage} from "../pages/search/search";
 import { LoginPage} from "../pages/login/login";
+import { CommentsPage } from '../pages/comments/comments';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+
 import {Geolocation} from "@ionic-native/geolocation";
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 import {GeoModalPage} from "../pages/geo-modal/geo-modal";
 import {FormsModule} from "@angular/forms";
+
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 
 @NgModule({
@@ -36,8 +42,8 @@ import {FormsModule} from "@angular/forms";
     TabsPage,
     SearchPage,
     LoginPage,
-    GeoModalPage
-
+    GeoModalPage,
+    CommentsPage
   ],
   imports: [
     BrowserModule,
@@ -56,8 +62,8 @@ import {FormsModule} from "@angular/forms";
     TabsPage,
     SearchPage,
     LoginPage,
-    GeoModalPage
-
+    GeoModalPage,
+    CommentsPage
   ],
   providers: [
     StatusBar,
@@ -68,6 +74,7 @@ import {FormsModule} from "@angular/forms";
     ItemsProvider,
     Geolocation,
     GeolocationProvider,
+    Camera
   ]
 })
 export class AppModule {}
