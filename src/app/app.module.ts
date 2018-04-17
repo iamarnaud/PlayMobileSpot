@@ -21,6 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+import { ImageServiceProvider } from '../providers/image-service/image-service';
+import { CommentairesServiceProvider } from '../providers/commentaires-service/commentaires-service';
+
 
 
 @NgModule({
@@ -37,8 +40,9 @@ import { ItemsProvider } from '../providers/items/items';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
+    AngularFireModule.initializeApp(environment.firebase, 'spot'),
     AngularFirestoreModule,
+
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -57,8 +61,11 @@ import { ItemsProvider } from '../providers/items/items';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+
     UserServiceProvider,
-    ItemsProvider
+    ItemsProvider,
+    ImageServiceProvider,
+    CommentairesServiceProvider
   ]
 })
 export class AppModule {}

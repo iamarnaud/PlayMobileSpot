@@ -12,5 +12,26 @@
 
 <ion-content padding>
   <h2>Bienvenue sur le flux</h2>
- 
+  <div *ngIf="users?.length > 0;else noUsers">
+  <div *ngFor="let image of users">
+
+    <p>{{user.prenom}}</p>
+    <p>{{user.nom}}</p>
+
+
+
+    <!--<p><img src="{{user.images.valueOf().lien}}"></p>-->
+    <p>{{user.images.description}}</p>
+    <!--<p>{{user.images.valueOf().like}}</p>-->
+    <!--<p>{{user.images.valueOf().commentaire[com]}}</p>-->
+    <!--<p>{{user.images.valueOf().commentaire[date_com]}}</p>-->
+    <!--<p>{{user.images.valueOf().commentaire[auteur]}}</p>-->
+
+  </div>
+  </div>
+  <ng-template #noUsers>
+    <hr>
+    <h5>There are no users to list</h5>
+  </ng-template>
+
 </ion-content>
