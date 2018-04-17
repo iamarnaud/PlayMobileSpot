@@ -4,3 +4,42 @@
   font-size: 40px;
 }
 
+#identifiant{
+
+  text-align: center;
+  vertical-align: center;
+}
+
+.nom{
+  display: inline-block;
+  text-align: right;
+  font-size: 30px;
+  padding-right: 5px;
+}
+
+#photoprofil{
+  height: 120px;
+  position: relative;
+  text-align: right;
+  border-radius: 10px;
+}
+
+#age{
+  font-size: 20px;
+}
+
+#map {
+  width: 100%;
+  height: 50%;
+}
+
+#amis{
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+#nombreamis{
+  font-size: 15px;
+}
+
+

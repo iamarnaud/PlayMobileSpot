@@ -4,26 +4,31 @@
       SEECRETSPOT
     </ion-title>
     <ion-buttons end>
-    <button ion-button clear icon-only block (click)="showConfirm()">
-    <ion-icon name="exit" md="md-exit" id="icon_logout"></ion-icon>
-    </button>
-  </ion-buttons>
+      <button ion-button clear
+              (click)="showConfirm()">
+        <ion-icon name="exit" md="md-exit" id="icon_logout"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-<div  *ngIf="user">
-
-  <h1>{{ user.nom }}</h1>
-  <h1>{{ user.prenom }}</h1>
-  <img [src]="user.avatar" alt="avatar">
-  <h1>{{ user.age }}</h1>
-</div>
-
-  <div>
-    <h1>Amis</h1>
-    <h2>J'ai : .... amis</h2>
+  <div *ngIf="user">
+    <div id="identifiant">
+      <div id="personne"></div>
+      <h1 class="nom">{{ user.prenom }}</h1>
+      <h1 class="nom">{{ user.nom }}</h1>
+      <img id="photoprofil" [src]="user.avatar" alt="avatar">
+      <p id="age">{{ user.age }} ans</p>
+    </div>
   </div>
+
+  <div id="amis">
+    <h1>Amis</h1>
+    <h2 id="nombreamis">J'ai [...] amis</h2>
+  </div>
+
+  <div #map id="map"></div>
 
 </ion-content>
