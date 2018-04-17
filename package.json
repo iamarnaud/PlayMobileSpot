@@ -61,7 +61,6 @@
         "GEOLOCATION_USAGE_DESCRIPTION": "Localisation des utilisateurs"
       },
       "cordova-plugin-camera": {}
-
     },
     "platforms": [
       "android"

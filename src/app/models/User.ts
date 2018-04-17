@@ -4,5 +4,6 @@ export class User {
   prenom?: string;
   age?: number;
   avatar?: string;
+  images?:object;
 
 }
