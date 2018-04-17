@@ -23,6 +23,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
+import { ImagesProvider } from '../providers/images/images';
+import { CommentairesProvider } from '../providers/commentaires/commentaires';
 
 import {Geolocation} from "@ionic-native/geolocation";
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
@@ -30,6 +32,7 @@ import {GeoModalPage} from "../pages/geo-modal/geo-modal";
 import {FormsModule} from "@angular/forms";
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 
 
@@ -48,7 +51,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase, 'SeecretSpot'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
     FormsModule
@@ -68,13 +71,15 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
     ItemsProvider,
     Geolocation,
     GeolocationProvider,
-    Camera
+    Camera,
+    ImagesProvider,
+    CommentairesProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}
