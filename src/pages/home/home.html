@@ -11,53 +11,44 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="users?.length > 0;else noUsers">
-    <ion-card *ngFor="let user of users">
+  <!--<ion-refresher>
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>-->
+  <div *ngFor="let image of images">
+    <ion-card>
 
       <ion-item>
         <ion-avatar item-start>
-          <img src="{{user.avatar}}">
+          <img [src]="image.userCurrent.avatar">
         </ion-avatar>
-        <h2>{{user.prenom}} {{user.nom}}</h2>
-        <p>{{user.date}}</p>
-
+        <h2>{{image.userCurrent.prenom}} {{image.userCurrent.nom}}</h2>
+        <p>{{ timeConverter(image.timestamp)}}</p>
       </ion-item>
 
-      <div *ngFor="let image of user.images">
-        <!--<img [src]="base64Image" *ngIf="base64Image"/>-->
-        <img src="{{image.lien}}">
-        <ion-row>
-          <ion-card-content>
-            <p>{{image.description}}</p>
-          </ion-card-content>
+      <img [src]="image.image" />
 
-          <ion-row>
-            <ion-col>
-              <button ion-button icon-left clear small color="nav">
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>Likes&nbsp;</div>
-                <ion-badge color="nav">{{image.likeCount}}</ion-badge>
-              </button>
-            </ion-col>
+      <ion-card-content>
+        <p>{{ image.description }}</p>
+      </ion-card-content>
 
-            <ion-col>
-              <button ion-button icon-left clear small color="nav" (click)="goToCommentsPage()">
-                <ion-icon name="text" color="nav"></ion-icon>
-                <div>Comments&nbsp;</div>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small color="nav">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>Likes&nbsp;</div>
+            <ion-badge color="nav">{{image.like}}</ion-badge>
+          </button>
+        </ion-col>
 
-                  <ion-badge color="nav">{{image.com_count}}
-                  </ion-badge>
+        <ion-col>
+          <button ion-button icon-left clear small color="nav" (click)="goToCommentsPage()">
+            <ion-icon name="text" color="nav"></ion-icon>
+            <div>Comments&nbsp;</div>
+            <ion-badge color="nav">?</ion-badge>
+          </button>
+        </ion-col>
+      </ion-row>
 
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-row>
-      </div>
     </ion-card>
-    <ng-template #noUsers>
-      <hr>
-      <h5>There are no users to list</h5>
-    </ng-template>
   </div>
 </ion-content>
-
