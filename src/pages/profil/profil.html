@@ -15,18 +15,16 @@
 <ion-content padding>
 
   <div *ngIf="user">
-    <div id="identifiant">
-      <div id="personne"></div>
-      <h1 class="nom">{{ user.prenom }}</h1>
-      <h1 class="nom">{{ user.nom }}</h1>
-      <img id="photoprofil" [src]="user.avatar" alt="avatar">
-      <p id="age">{{ user.age }} ans</p>
-    </div>
-  </div>
+    <ion-row id="identifiant">
 
-  <div id="amis">
-    <h1>Amis</h1>
-    <h2 id="nombreamis">J'ai [...] amis</h2>
+      <ion-col><img id="photoprofil" [src]="user.avatar" alt="avatar"></ion-col>
+      <ion-col> <div ><span class="nom">{{ user.prenom }} {{ user.nom }} </span> <p id="amis"> X Amis</p></div>
+
+
+      </ion-col>
+
+
+    </ion-row>
   </div>
 
   <div #map id="map"></div>
