@@ -4,27 +4,26 @@
   font-size: 40px;
 }
 
-#identifiant{
+#identifiant {
 
   text-align: center;
   vertical-align: center;
 }
 
-.nom{
+.nom {
   display: inline-block;
-  text-align: right;
-  font-size: 30px;
-  padding-right: 5px;
+  font-family: "Permanent Marker";
+  font-size: 25px;
 }
 
-#photoprofil{
+#photoprofil {
   height: 120px;
   position: relative;
-  text-align: right;
+  margin-bottom: 20px;
   border-radius: 10px;
 }
 
-#age{
+#age {
   font-size: 20px;
 }
 
@@ -33,12 +32,13 @@
   height: 50%;
 }
 
-#amis{
-  font-size: 20px;
-  margin-top: 50px;
+#amis {
+  font-size: 15px;
+
+  font-family: "Permanent Marker";
 }
 
-#nombreamis{
+#nombreamis {
   font-size: 15px;
 }
 

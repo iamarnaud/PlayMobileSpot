@@ -34,6 +34,9 @@ export class HomePage {
   ) {
 
   }
+  like(image){
+    image.like ++;
+  }
 
   goToCommentsPage() {
     this.navCtrl.push(CommentsPage);

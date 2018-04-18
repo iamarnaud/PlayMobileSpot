@@ -33,7 +33,7 @@
 
       <ion-row>
         <ion-col>
-          <button ion-button icon-left clear small color="nav">
+          <button ion-button icon-left clear small color="nav" (click)="like(image)">
             <ion-icon name="thumbs-up"></ion-icon>
             <div>Likes&nbsp;</div>
             <ion-badge color="nav">{{image.like}}</ion-badge>
