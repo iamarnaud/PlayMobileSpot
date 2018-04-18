@@ -92,9 +92,20 @@ export class ProfilPage {
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-  }, (err) => {
-      console.log(err);
+    this.addMarker();
     });
   }
-}
+
+  addMarker(){
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+
+    }
+
+} //balise fin de fonction profil page
+
