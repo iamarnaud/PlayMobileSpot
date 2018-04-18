@@ -132,5 +132,8 @@ export class GeoModalPage {
     console.log("Service Stoppé !!")
   }
 
+  dismiss() {
+    this.navCtrl.pop();
+}
 
 }
