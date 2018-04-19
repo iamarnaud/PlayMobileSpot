@@ -10,6 +10,7 @@ import {User} from "../../app/models/User";
 import {Image} from "../../app/models/Image";
 import {Commentaire} from "../../app/models/Commentaire";
 import {AuthProvider} from "../../providers/auth/auth";
+import {sourceInfo} from "@angular/compiler-cli/src/metadata/evaluator";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class HomePage {
   users: User[];
   images;
   description;
+  source;
   commentaires: Commentaire[];
   public base64Image: string;
 
@@ -42,11 +44,16 @@ export class HomePage {
     this.navCtrl.push(CommentsPage);
   }
 
-  takePicture() {
+  takePicture(type: string) {
+
     this.camera.getPicture({
       destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: (type === 'camera') ? this.camera.PictureSourceType.CAMERA : ((type === 'albums') ? this.camera.PictureSourceType.PHOTOLIBRARY : -1) ,
+     // sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       targetWidth: 1000,
-      targetHeight: 1000
+      targetHeight: 1000,
+      mediaType: this.camera.MediaType.ALLMEDIA
+
     })
       .then((imageData) => {
         this.base64Image = "data:image/jpeg;base64," + imageData;
@@ -68,6 +75,8 @@ export class HomePage {
           }
         );
 
+      }, (err) => {
+        console.log(err)
       })
   }
 
@@ -127,7 +136,7 @@ export class HomePage {
           role: 'cancel',
           handler: data => {
             this.description = ""
-            resolve(this.description);
+            reject("Opération annulée");
           }
         },
         {
