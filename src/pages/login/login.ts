@@ -40,7 +40,7 @@ export class LoginPage {
       'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
-    this.myposition = geoposition.getUserPosition(); // eric@TODO penser à storer la postision en base
+   // this.myposition = geoposition.getUserPosition(); // eric@TODO penser à storer la postision en base
   }
 
   /**

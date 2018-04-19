@@ -95,6 +95,9 @@ export class ProfilPage {
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.addMarker();
+    }, (err) => {
+      console.log(JSON.stringify(err))
+     // eric@TODO Verifier géoloc
     });
   }
 

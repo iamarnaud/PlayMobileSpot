@@ -3,8 +3,13 @@
     <ion-title>SEECRETSPOT
     </ion-title>
     <ion-buttons end>
-      <button ion-button clear icon-only (click)="takePicture()">
+      <button ion-button clear icon-only (click)="takePicture('camera')">
         <ion-icon name="camera" md="md-camera" id="icon_camera"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="takePicture('albums')">
+        <ion-icon name="albums" md="md-albums" id="icon_albums"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
