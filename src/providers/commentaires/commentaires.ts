@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
-import {Commentaire} from "../../app/models/commentaire";
+import {Commentaire} from "../../app/models/Commentaire";
 
 /*
   Generated class for the CommentairesProvider provider.
