@@ -1,9 +1,9 @@
 export class User {
-  UID?: string;
+  uid?: string;
   nom?: string;
   prenom?: string;
   age?: number;
   avatar?: string;
   images?:object;
-
+  contacts: any[];
 }

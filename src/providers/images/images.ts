@@ -15,7 +15,7 @@ import {Observable} from "rxjs/Observable";
 export class ImagesProvider {
 
   imagesCollection: AngularFirestoreCollection<Image>;
-  images: Observable<Image[]>
+  images: Observable<any[]>
 
   constructor(public afs:AngularFirestore) {
     this.images = this.afs.collection('posts').valueChanges();

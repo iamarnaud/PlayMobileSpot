@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { ItemsProvider} from "../../providers/items/items";
 import { User} from "../../app/models/User";
 import { AlertController } from 'ionic-angular';
+import {AuthProvider} from "../../providers/auth/auth";
+import {ProfilPage} from "../profil/profil";
 
 
 @Component({
@@ -10,12 +12,15 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  users: User[];
+  contacts;
+  users;
+  userCurrent;
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public userService: ItemsProvider) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public userService: ItemsProvider ,public authUser: AuthProvider) {
+    this.getContacts()
   }
-  showConfirm() {
+  showConfirm(user) {
     let confirm = this.alertCtrl.create({
       title: 'Ne plus suivre',
       message: 'Êtes vous sûr de vouloir supprimer ce contact ?',
@@ -24,6 +29,7 @@ export class ContactPage {
           text: 'Supprimer',
           handler: () => {
             console.log('Disagree clicked');
+            this.delContact(user);
           }
         },
         {
@@ -38,10 +44,31 @@ export class ContactPage {
   }
 
   // run automatiquement
-  ngOnInit(){
-    this.userService.getUsers().subscribe(users=>{
-      // console.log(users);
-      this.users = users;
-    });
+  ionViewDidEnter() {
+    this.getContacts()
   }
+
+  getContacts () {
+
+  this.userService.getUsers().subscribe(users=>{
+    this.users = users;
+    this.userCurrent =  this.users.filter( (data) => data.uid ===  this.authUser.userCurrent.uid )[0];
+    this.contacts = this.userCurrent.contacts;
+    });
+
+  }
+
+  public goToUserProfil(user) {
+    this.navCtrl.push(ProfilPage, user)
+  }
+
+
+  public delContact(user) {
+    this.userService.getUsers().subscribe(users=> {
+      this.users = users;
+      this.userCurrent =  this.users.filter( (data) => data.uid ===  this.authUser.userCurrent.uid )[0];
+    })
+    this.userService.delContact(user, this.authUser.theUSER);
+  }
+
 }
