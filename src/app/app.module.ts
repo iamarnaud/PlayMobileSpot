@@ -9,6 +9,7 @@ import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 
 
+
 import { ProfilPage } from '../pages/profil/profil';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -25,6 +26,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { ItemsProvider } from '../providers/items/items';
 import { ImagesProvider } from '../providers/images/images';
 import { CommentairesProvider } from '../providers/commentaires/commentaires';
+import {SignupPage} from "../pages/signup/signup";
 
 import {Geolocation} from "@ionic-native/geolocation";
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
@@ -46,7 +48,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     SearchPage,
     LoginPage,
     GeoModalPage,
-    CommentsPage
+    CommentsPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,7 +70,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     SearchPage,
     LoginPage,
     GeoModalPage,
-    CommentsPage
+    CommentsPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
