@@ -27,6 +27,7 @@ import { ItemsProvider } from '../providers/items/items';
 import { ImagesProvider } from '../providers/images/images';
 import { CommentairesProvider } from '../providers/commentaires/commentaires';
 import {SignupPage} from "../pages/signup/signup";
+import {ParametresPage} from "../pages/parametres/parametres";
 
 import {Geolocation} from "@ionic-native/geolocation";
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
@@ -49,7 +50,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     LoginPage,
     GeoModalPage,
     CommentsPage,
-    SignupPage
+    SignupPage,
+    ParametresPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     LoginPage,
     GeoModalPage,
     CommentsPage,
-    SignupPage
+    SignupPage,
+    ParametresPage
   ],
   providers: [
     StatusBar,

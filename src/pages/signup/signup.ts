@@ -9,6 +9,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '@angular/forms';
 import { HomePage } from '../home/home';
 import {ProfilPage} from "../profil/profil";
+import {ParametresPage} from "../parametres/parametres";
 
 @IonicPage({
   name: 'signup'
@@ -42,7 +43,7 @@ export class SignupPage {
         this.signupForm.value.password)
         .then(() => {
           this.loading.dismiss().then( () => {
-            this.navCtrl.setRoot(ProfilPage);
+            this.navCtrl.push(ParametresPage);
           });
         }, (error) => {
           this.loading.dismiss().then( () => {
