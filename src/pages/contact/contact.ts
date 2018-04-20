@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth/auth";
 import {ProfilPage} from "../profil/profil";
 
+declare var google;
 
 @Component({
   selector: 'page-contact',
@@ -15,10 +16,12 @@ export class ContactPage {
   contacts;
   users;
   userCurrent;
+  distanceContact;
 
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public userService: ItemsProvider ,public authUser: AuthProvider) {
     this.getContacts()
+
   }
   showConfirm(user) {
     let confirm = this.alertCtrl.create({
@@ -43,6 +46,7 @@ export class ContactPage {
     confirm.present();
   }
 
+
   // run automatiquement
   ionViewDidEnter() {
     this.getContacts()
@@ -54,6 +58,14 @@ export class ContactPage {
     this.users = users;
     this.userCurrent =  this.users.filter( (data) => data.uid ===  this.authUser.userCurrent.uid )[0];
     this.contacts = this.userCurrent.contacts;
+
+    this.distanceContact =  this.contacts.map( (data) => {
+     let dd =  this.calcDistance(new google.maps.LatLng(this.authUser.theUSER.geolocation.latitude, this.authUser.theUSER.geolocation.longitude), new google.maps.LatLng(data.geolocation.latitude, data.geolocation.longitude));
+
+     this.userService.addDistContact(data,dd)
+     return dd
+    });
+
     });
 
   }
@@ -71,4 +83,10 @@ export class ContactPage {
     this.userService.delContact(user, this.authUser.theUSER);
   }
 
+
+  public calcDistance(p1, p2) {
+    let d = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+
+    return d
+  }
 }

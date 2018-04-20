@@ -107,13 +107,13 @@ export class HomePage {
     this.userService.getUsers().subscribe(users => {
 
       this.users = users;
-      console.log(this.users)
+
 
     });
     this.imagesService.getImagesDesc().subscribe(images => {
 
       this.images = images;
-      console.log(this.images)
+
     });
 
   }

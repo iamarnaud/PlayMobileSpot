@@ -12,12 +12,15 @@
   cf video https://www.youtube.com/watch?v=gUmItHaVL2w
   on utilise le model USer-->
   <ion-list *ngFor="let contact of contacts">
+
     <ion-item-sliding>
       <ion-item (click)="goToUserProfil(contact)">
         <ion-avatar item-start>
           <img src="{{contact.avatar}}">
         </ion-avatar>
-        <h2>{{contact.nom}} {{contact.prenom}}</h2>
+        <h2>{{contact.nom}} {{contact.prenom}} </h2>
+        <p> à {{ contact.distance }} Km </p>
+
       </ion-item>
 
       <ion-item-options side="right">
@@ -31,6 +34,7 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+
   </ion-list>
 
 </ion-content>

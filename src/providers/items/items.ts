@@ -76,5 +76,26 @@ export class ItemsProvider {
       });
   }
 
+  addDistContact(user, dd) {
+    this.usersCollection.doc(user.uid).set(
+      {
+        uid: user.uid,
+        age: user.age,
+        avatar: user.avatar,
+        geolocation: user.geolocation,
+        contacts : user.contacts,
+        nom: user.nom,
+        prenom: user.prenom,
+        distance : dd
+      }
 
+    )
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+
+  }
 }

@@ -87,7 +87,7 @@ export class SearchPage {
 
   ionViewDidEnter() {
      this.position = this.geolocalisation.getUserPosition().status;
-      console.log(this.position)
+
 
   }
 }
