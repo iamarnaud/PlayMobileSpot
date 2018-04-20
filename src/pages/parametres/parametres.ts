@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ProfilPage} from "../profil/profil";
 
 /**
  * Generated class for the ParametresPage page.
@@ -21,5 +22,7 @@ export class ParametresPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ParametresPage');
   }
-
+  enregistrerParam(){
+    this.navCtrl.push(ProfilPage);
+  }
 }
