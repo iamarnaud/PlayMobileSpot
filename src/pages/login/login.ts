@@ -12,6 +12,8 @@ import {AuthProvider} from '../../providers/auth/auth';
 
 import {TabsPage} from "../tabs/tabs";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
+import {CommentsPage} from "../comments/comments";
+import {SignupPage} from "../signup/signup";
 
 @IonicPage()
 @Component({
@@ -51,6 +53,9 @@ export class LoginPage {
    * @method logIn
    * @return {none}
    */
+  goToSignUp(){
+    this.navCtrl.push(SignupPage)
+  }
   logIn(): void {
     let email: any = this.form.controls['email'].value,
       password: any = this.form.controls['password'].value;

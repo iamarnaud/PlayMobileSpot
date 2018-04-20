@@ -71,7 +71,8 @@ export class ProfilPage {
   }
 
   getUserAuthIUD() {
-    this.uid = this.userAuth.userCurrent.uid;
+    this.uid = this.userAuth. getUserAuthID();
+
   }
 
 

@@ -69,7 +69,18 @@ export class AuthProvider {
    * @method logOut
    * @return {Promise}
    */
-
+  signupUser(email: string, password: string): Promise<any> {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then( newUser => {
+        firebase
+          .database()
+          .ref('/userProfile')
+          .child(newUser.uid)
+          .set({ email: email });
+      });
+  }
   logOut(): Promise<any> {
     return new Promise((resolve, reject) => {
       firebase

@@ -4,13 +4,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import {environment} from "../environments/environment";
+
+import {TabsPage} from "../pages/tabs/tabs";
 import {LoginPage} from "../pages/login/login";
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage; //Mettre TabsPage si pas de login (BDD).
+  rootPage:any=LoginPage ; //Mettre TabsPage si pas de login (BDD).
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -20,5 +24,16 @@ export class MyApp {
       splashScreen.hide();
     });
     firebase.initializeApp(environment.firebase);
+
+  // const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+  // if (!user) {
+  //   this.rootPage = 'LoginPage';
+  //   unsubscribe();
+  // } else {
+  //   this.rootPage = TabsPage;
+  //   unsubscribe();
+  // }
+  // });
+
   }
 }
