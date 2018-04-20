@@ -14,9 +14,9 @@ declare var google;
 
 export class ProfilPage {
 
-  UID ;
+  uid ;
   user: object;
-
+  nbCts;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
@@ -30,13 +30,11 @@ export class ProfilPage {
   ) {
     this.getUserAuthIUD();
 
-    if (typeof(navParams.get('UID')) !== 'undefined') {
-      this.UID = navParams.get('UID')
+
+    if (typeof(navParams.get('uid')) !== 'undefined') {
+      this.uid = navParams.get('uid')
     }
-    ;
-
     this.getUsers();
-
   }
 
   showConfirm() {
@@ -64,21 +62,27 @@ export class ProfilPage {
     this.userService.getUsers().subscribe(data => {
 
       this.user = data.filter(elem => {
-        return elem.UID === this.UID;
+        return elem.uid === this.uid;
       });
-      // Transforme le tebleau en objet
       this.user = this.user[0]
+      this.nbContacts(this.user);
 
     })
   }
 
   getUserAuthIUD() {
-    this.UID = this.userAuth.getUserAuthID().uid;
+    this.uid = this.userAuth.userCurrent.uid;
   }
 
 
   ionViewDidLoad() {
+
     this.loadMap();
+
+  }
+
+  ionViewWillEnter() {
+
   }
 
   loadMap() {
@@ -110,5 +114,16 @@ export class ProfilPage {
 
     }
 
+  nbContacts (user) {
+    if(typeof user !== 'undefined'){
+      console.log(user.contacts);
+      this.nbCts = user.contacts.length;
+    }else{
+      this.nbCts = 0;
+      console.log(user)
+    }
+
+
+    }
 } //balise fin de fonction profil page
 

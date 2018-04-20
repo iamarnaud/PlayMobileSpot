@@ -14,7 +14,7 @@ import {Commentaire} from "../../app/models/commentaire";
 export class CommentairesProvider {
 
   commentaireCollection: AngularFirestoreCollection<Commentaire>;
-  commentaires: Observable<Commentaire[]>
+  commentaires: Observable<any[]>
 
   constructor(public afs:AngularFirestore) {
     this.commentaires = this.afs.collection('commentaires').valueChanges();

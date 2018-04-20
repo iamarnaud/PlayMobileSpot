@@ -67,7 +67,7 @@ export class HomePage {
       .then(imageData => {
         this.imagesService.addImage(
           {
-            userCurrent: this.users.filter(user => user.UID === this.authUser.getUserAuthID().uid)[0],
+            userCurrent: this.authUser.theUSER,
             image: this.base64Image ? this.base64Image : "",
             like: 0,
             timestamp: Date.now(),

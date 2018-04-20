@@ -11,23 +11,23 @@
   <!--chercher data dans bdd via angularfire2
   cf video https://www.youtube.com/watch?v=gUmItHaVL2w
   on utilise le model USer-->
-  <ion-list *ngFor="let user of users">
+  <ion-list *ngFor="let contact of contacts">
     <ion-item-sliding>
-      <ion-item>
+      <ion-item (click)="goToUserProfil(contact)">
         <ion-avatar item-start>
-          <img src="{{user.avatar}}">
+          <img src="{{contact.avatar}}">
         </ion-avatar>
-        <h2>{{user.nom}} {{user.prenom}}</h2>
+        <h2>{{contact.nom}} {{contact.prenom}}</h2>
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="showConfirm()">
+        <button ion-button color="danger" (click)="showConfirm(contact)">
           <ion-icon class="buttonsize" name="close"></ion-icon>
         </button>
 
         <button ion-button color="secondary">
           <ion-icon class="buttonsize" name="mail"></ion-icon>
-          
+
         </button>
       </ion-item-options>
     </ion-item-sliding>

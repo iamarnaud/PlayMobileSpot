@@ -5,6 +5,7 @@ import {ItemsProvider} from "../../providers/items/items";
 import {User} from "../../app/models/User";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
 import {GeoModalPage} from "../geo-modal/geo-modal";
+import {AuthProvider} from "../../providers/auth/auth";
 
 
 /**
@@ -23,13 +24,15 @@ export class SearchPage {
 
   users: User[];
   position;
+  userCurrent;
 
   constructor(
     public navCtrl: NavController,
     public userService: ItemsProvider,
     public navParams: NavParams,
     public geolocalisation: GeolocationProvider,
-    public geomodal : ModalController
+    public geomodal : ModalController,
+    public authUser : AuthProvider
   ) {
     this.position =  geolocalisation.getUserPosition().status;
     this.getUsers();
@@ -44,15 +47,18 @@ export class SearchPage {
       this.users = this.users.filter((user) => {
         return (user.prenom.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }else {
+      this.getUsers();
     }
-
   }
 
 
   public addContact(user) {
-    // Eric@TODO à Finir
-
-    console.log(`Ok Contact : ${user.prenom}  avec l' ID : ${user.UID} a été ajouté`);
+      this.userService.getUsers().subscribe(users=> {
+        this.users = users;
+        this.userCurrent =  this.users.filter( (data) => data.uid ===  this.authUser.userCurrent.uid )[0];
+      })
+    this.userService.addContact(user, this.authUser.theUSER);
   }
 
 
@@ -61,8 +67,8 @@ export class SearchPage {
   }
 
   public getUsers() {
-    this.userService.getUsers().subscribe(data => {
-      this.users = data;
+    this.userService.getUsers().subscribe(users => {
+      this.users  =  users.filter( (data) => data.uid !==  this.authUser.userCurrent.uid );
     })
   }
 
